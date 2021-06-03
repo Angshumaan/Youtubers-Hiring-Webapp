@@ -1,0 +1,22 @@
+{% if messages %}
+
+    {% for message in messages %}
+        {% comment %} from Bootstrap just injecting varibales wherever we need {% endcomment %}
+        <div class="alert {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} alert-danger {% else %} alert-{{message.tags}} {% endif %} alert-dismissible fade show" role="alert">
+            <strong>
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}      
+                    Error:  <!---show the error here if message is wrong-->
+                {% else %}
+                {{message.tags | title }} <!---show the success here if message is correct-->
+                {% endif %}
+
+            </strong>
+            {{message}}
+            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
+
